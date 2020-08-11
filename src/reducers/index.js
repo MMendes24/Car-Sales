@@ -23,19 +23,67 @@ export const reducer = (state = initialState, action) => {
         case ADD_FEATURE: 
             return {
                 ...state,
-                additionalPrice: state.additionalPrice + action.payload.price,
+                    additionalPrice: state.additionalPrice + action.payload.price,
+                        car: {
+                            ...state.car,
+                            features: [
+                                ...state.car.features, action.payload
+                            ]
+                            
+                        }
+                    }
+        case CLEAR_FEATURE:
+            const clearArray = state.car.features.filter(feature => feature.id !== action.payload.id)
+            return {
+                ...state,
+                additionalPrice: state.additionalPrice - action.payload.price,
                 car: {
                     ...state.car,
-                    features: [
-                        ...state.car.features, action.payload
-                    ]
+                    features: clearArray
                 }
-              }
-
-        case CLEAR_FEATURE:
-            return state
+            }
 
         default:
             return state
     }
   }
+
+//   [...state.filter( item => { 
+//     if ( item.completed === false ) {
+//         return {
+//             ...item
+//         }
+//     } else {
+//         return null
+//     }
+// })]
+
+// case CLEAR_FEATURE:
+//     return {
+//         ...state,
+//         car: {
+//             features: state.car.features.filter( feature => {
+//                 if ( feature.id !== action.payload.id) {
+//                     console.log(feature.id)
+//                     return {
+//                         ...state,
+//                         car: {
+//                             ...state.car,
+//                             features: [
+//                                 ...state.car.features, feature
+//                             ]
+//                         }
+//                     }
+//                 } else {
+//                     return {
+//                         ...state
+//                     }
+//                 }
+//             })
+//         } 
+//     }
+
+// default:
+//     return state
+// }
+// }

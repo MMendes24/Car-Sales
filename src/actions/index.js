@@ -7,6 +7,7 @@ export const addFeature = (feature) => {
 
 export const CLEAR_FEATURE = "CLEAR_FEATURE"
 
-export const clearFeature = () => {
-    return { type: CLEAR_FEATURE}
+export const clearFeature = (feature) => {
+    console.log("I run for you")
+    return { type: CLEAR_FEATURE, payload: feature }
 }
