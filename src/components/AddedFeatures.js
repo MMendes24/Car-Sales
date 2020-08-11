@@ -22,7 +22,7 @@ const AddedFeatures = props => {
 
 const mapStateToProps = (state) => {
   return {
-    length: state.car.features.length,
+
     features: state.car.features
   }
 }
